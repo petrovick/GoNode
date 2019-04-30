@@ -2,14 +2,17 @@
 
 {% block body %}
   <form action="/signup" method="post" enctype="multipart/form-data">
+
+    {% include "_partials/flash.njk" %}
+
     <label for="avatar">
       <img src="/images/avatar.svg" />
     </label>
     <input id="avatar" name="avatar" type="file" />
 
-    <input type="text" name="name" placeholder="Nome Completo" />
-    <input type="email" name="email" placeholder="E-mail" />
-    <input type="password" name="password" placeholder="" />
+    <input type="text" name="name" placeholder="Nome Completo" value="Gabriel Petrovick Oliveira dos Santos" />
+    <input type="email" name="email" placeholder="E-mail" value="petrovickg@hotmail.com" />
+    <input type="password" name="password" placeholder="" value="123" />
 
     <label for="provider">
       <input type="checkbox" id="provider" name="provider" value="1" />
