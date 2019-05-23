@@ -18,11 +18,18 @@ adonis new yardstick --api-only
 
 or manually clone the repo and then run `npm install`.
 
-
 ### Migrations
 
 Run the following command to run startup migrations.
 
 ```js
 adonis migration:run
+```
+
+### Migrations Rollback
+
+Run the following command to undo all the migrations.
+
+```js
+adonis migration:rollback
 ```
