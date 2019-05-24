@@ -7,4 +7,10 @@ Route.post('/password', 'ForgotPasswordController.store')
 Route.put('/password', 'ForgotPasswordController.update')
 
 Route.get('/files/:id', 'FileController.show')
-Route.post('/files', 'FileController.store')
+
+Route.group(() => {
+  Route.post('/files', 'FileController.store')
+  // apiOnly() tira o metodo create e edit
+  Route.resource('projects', 'ProjectController').apiOnly()
+  Route.resource('projects.tasks', 'TaskController').apiOnly()
+}).middleware(['auth'])

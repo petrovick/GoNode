@@ -12,7 +12,7 @@ class TaskSchema extends Schema {
         .unsigned() // apenas valores positivos
         .notNullable()
         .references('id')
-        .inTable('tasks')
+        .inTable('projects')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table
