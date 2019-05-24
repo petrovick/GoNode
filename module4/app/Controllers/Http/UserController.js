@@ -1,14 +1,26 @@
-'use strict'
-const User = use('App/Models/User')
+"use strict";
+const Database = use("Database");
+
+const User = use("App/Models/User");
 
 class UserController {
-  async store ({
-    request
-  }) {
-    const data = request.only(['username', 'email', 'password'])
-    const user = await User.create(data)
-    return user
+  async store({ request }) {
+    const data = request.only(["username", "email", "password"]);
+
+    const addresses = request.input("addresses");
+
+    const trx = await Database.beginTransaction();
+    try {
+      const user = await User.create(data, trx);
+
+      await user.addresses().createMany(addresses, trx);
+      await trx.commit();
+      return user;
+    } catch (err) {
+      trx.rollback();
+      throw err;
+    }
   }
 }
 
-module.exports = UserController
+module.exports = UserController;
