@@ -3,11 +3,12 @@
 const Project = use("App/Models/Project");
 
 class ProjectController {
-  async index({ request, response, view, auth }) {
+  async index({ request }) {
+    const { page } = request.get(); //get(0 retorna os query params)
     console.log("Entrou aqui");
     const projects = await Project.query()
       .with("user")
-      .fetch(); //fetch finaliza a query
+      .paginate(page); //fetch finaliza a query
     return projects;
   }
 
