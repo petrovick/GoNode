@@ -1,7 +1,7 @@
 'use strict'
 
 const Route = use('Route')
-Route.post('/users', 'UserController.store')
+Route.post('/users', 'UserController.store').validator('User')
 Route.post('/sessions', 'SessionController.store')
 Route.post('/password', 'ForgotPasswordController.store')
 Route.put('/password', 'ForgotPasswordController.update')
