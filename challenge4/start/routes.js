@@ -16,7 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.post('/users', 'UserController.store')
+Route.post('/users', 'UserController.store').validator('User')
 Route.post('/sessions', 'SessionController.store')
 
 Route.group(() => {
@@ -24,6 +24,4 @@ Route.group(() => {
 
   Route.put('/resetpassword', 'ResetPasswordController.store').validator('ResetPassword')
   Route.get('/shareevent/:id/:email', 'ShareEventController.store')
-
-
 }).middleware(['auth'])
