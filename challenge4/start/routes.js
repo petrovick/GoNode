@@ -23,7 +23,7 @@ Route.group(() => {
   Route.resource('events', 'EventController').apiOnly()
 
   Route.put('/resetpassword', 'ResetPasswordController.store').validator('ResetPassword')
-  Route.get('/shareevent/:id', 'ShareEventController.store')
+  Route.get('/shareevent/:id/:email', 'ShareEventController.store')
 
 
 }).middleware(['auth'])

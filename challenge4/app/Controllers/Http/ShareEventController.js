@@ -9,6 +9,7 @@ const Event = use("App/Models/Event");
 class ShareEventController {
   async store({ request, params, auth }) {
     console.log(params.id);
+    console.log(params.email);
     const user = await User.findOrFail(auth.user.id);
     const event = await Event.findOrFail(params.id);
     console.log(user.email);
